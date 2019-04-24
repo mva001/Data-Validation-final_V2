@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <h2>Upload existing Sites in CMDB:</h2>
+  <form class="button" method=post enctype=multipart/form-data>
+    <table>
+    <tr> 
+      <td>
+        <label id="#bb"> Select File
+          <input type="file" name=file>
+        </label> 
+        
+      <td>
+        {% if msg %}
+          <p><strong>Filename:</strong> {{ msg }}
+        {% endif %}   
+        <input class="mybutton" type=submit value=Submit>
+    </tr>
+    
+    </table>
+    
+  </form> 
+
+
+  <h2>Validate CIs/Sites:</h2>
+  
+  <form class="button" align="right" method="post" action="upload" enctype="multipart/form-data">
+    <table>
+    <tr>
+      <td><label id="#bb"> Select Files
+        <input type="file" multiple="" name="file[]" class="span3" /></td>
+      <td> 
+      {% if msg2 %}
+        <p><strong></strong> {{ msg2 }}
+      {% endif %}
+    <input class="mybutton" type="submit" value="Submit"  class="span2"></td>
+    </tr>
+    </table>
+   
+  </form>
+
+<div class="multi_upload_index">
+  <h2>INPUT FILES RULES:</h2>
+  <hr/>
+  <ul>  
+  <li><b> INPUT:</b></li>
+    <ul>  
+      <li><p> File extensions required: <i>xlsx</i> or <i>xls</i>;</li>
+      <li><p> The files should contain data only related to <b>CI's</b> and/or <b>Sites</b>. Please, avoid hidden sheets and other sheets not related to CI's and/or Sites. The schema should be one of the followings:</li>
+      <ul>  
+        <li><p> A single file with 2 sheets containing data only related to Sites and CIs;</li>
+        <li><p> 2 files with one sheet each, one for Sites and the other for CIs;</li>
+        <li><p> 1 file only with one sheet only, containing Sites or CIs data;</li>
+      </ul>
+      <li><p><b></b> When needed a file with all sites existing in ITSM.</li>
+    </ul>
+  </ul>
+
+  <ul>  
+  <li><b> OUTPUT:</b></li>
+    <ul>  
+      <li><p> File with a brief summary and issues overview found in data ("issues.txt");</li>
+      <li><p> Excel file with the data screened and the issues found (Report.xlsx).</li>
+    </ul>
+  </ul>
+</div>
+{% endblock %}

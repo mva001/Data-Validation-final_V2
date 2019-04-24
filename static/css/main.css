@@ -1,0 +1,293 @@
+@font-face{
+  font-family: myFirstFont;
+  src: url('NokiaKokia.ttf') format('truetype');
+  }
+
+  @font-face{
+  font-family: myFirstFont2;
+  src: url('Nokia Pure Text Light.ttf');
+  }
+
+
+body {
+  height:100%;
+  margin: 0;
+  padding: 0;
+  font-family: "myFirstFont2";
+  color: #000000;
+  background-color:#ffffff;
+  min-width:980px;
+}
+
+.title {
+  font-family: "myFirstFont";
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1px;
+  text-align: left;
+  letter-spacing: -1px;
+  color: #004fab;
+}
+/*
+ * Formatting the header area
+ */
+header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  line-height: 0.9;
+  background-color:#004fab;
+  height: 35px;
+  min-width:1000px;
+  margin-bottom: 10px;
+}
+header h1.logo {
+  font-family: 'myFirstFont';
+  margin: 0;
+  line-height: 1.2;
+  font-size: 1.7em;
+  color: #ffffff;
+  text-transform: uppercase;
+  float: right;
+
+}
+
+.footer {
+    font-family: "myFirstFont2";
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    padding: 1rem;
+    font-size: 0.8em;
+    line-height: 0.1;
+    background-color: #004fab;
+    color:#ffffff;
+    text-align: right;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    margin-top: 1000px;
+    min-width:980px;
+}   
+
+.footer_contents {
+
+    height:24px;
+    min-width:980px;
+    margin:auto;
+
+}
+
+div.index_company {
+  font-family: "myFirstFont2";
+  border: #004fab;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+  border-radius: 12px;
+}
+
+div.multi_upload_index {
+  font-family: "myFirstFont2";
+  border: #e6e6e6;
+  border-style: solid;
+  background-color: #e6e6e6;
+  padding-top: -10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 80px;
+  border-radius: 0px
+}
+
+div.multi_files_upload {
+  font-family: "myFirstFont2";
+  border: #e6e6e6;
+  border-style: solid;
+  background-color: #e6e6e6;
+  padding-top: -10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 80px;
+  border-radius: 0px
+}
+/*
+ * Centering the body content
+ */
+.container {
+  padding-top: 50px;
+  width: 1400px;
+  height:1000px;
+  margin: 0 auto;
+}
+
+
+h2 {
+  font-family: "myFirstFont2";
+  font-size: 1.2em;
+  font-weight: bold;
+}
+h3 {
+  font-family: "myFirstFont2";
+  font-size: 2.5em;
+  font-weight: normal;
+  margin-top: 1px;
+  text-align: left;
+  letter-spacing: -1px;
+  color: #000000;
+}
+.menu {
+  float: left;
+  margin-top: -5px;
+}
+.menu li {
+  display: inline;
+}
+.menu li + li {
+  margin-left: 35px;
+}
+.menu li a {
+  font-family: 'myFirstFont';
+  color: #ffffff;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+
+
+
+
+.image_dim {
+    margin-top: 130px;
+}
+
+.button {
+  color: #000000;
+  border: none;
+  border-radius: 1px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #004fab;
+    margin: 1em 0;
+    padding: 0; 
+    margin-bottom:50px;
+}
+
+.mybutton {
+  /*-moz-box-shadow: 0px 10px 14px -7px #276873;
+  -webkit-box-shadow: 0px 10px 14px -7px #276873;
+  box-shadow: 0px 10px 14px -7px #276873;
+
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #004fab), color-stop(1, #408c99));
+  background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+  background:-webkit-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:-o-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:-ms-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:linear-gradient(to bottom, #004fab 5%, #408c99 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);*/
+  background-color:#004fab;
+  -moz-border-radius:2px;
+  -webkit-border-radius:5px;
+  border-radius:2px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:myFirstFont2;
+  font-size:14px;
+  /*font-weight:bold;*/
+  padding:8px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #000000;
+
+}
+.mybutton:hover {
+  /*background:-webkit-gradient(
+    linear, left top, left bottom, color-stop(0.05, #408c99),color-stop(1, #cce2ff));
+  background:-moz-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-webkit-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-o-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-ms-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:linear-gradient(to bottom, #408c99 5%, #cce2ff 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='##cce2ff',GradientType=0);*/
+  background-color:#e6e6e6;
+  color:#000000;
+}
+.mybutton:active {
+  position:relative;
+  top:1px;
+}
+
+
+.mybutton2 {
+  /*-moz-box-shadow: 0px 10px 14px -7px #276873;
+  -webkit-box-shadow: 0px 10px 14px -7px #276873;
+  box-shadow: 0px 10px 14px -7px #276873;
+
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #004fab), color-stop(1, #408c99));
+  background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+  background:-webkit-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:-o-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:-ms-linear-gradient(top, #004fab 5%, #408c99 100%);
+  background:linear-gradient(to bottom, #004fab 5%, #408c99 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);*/
+  background-color:#b3b3b3;
+  -moz-border-radius:2px;
+  -webkit-border-radius:5px;
+  border-radius:2px;
+  display:inline-block;
+  cursor:pointer;
+  color:#000000;
+  font-family:myFirstFont2;
+  font-size:14px;
+  /*font-weight:bold;*/
+  padding:8px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #000000;
+
+}
+.mybutton2:hover {
+  /*background:-webkit-gradient(
+    linear, left top, left bottom, color-stop(0.05, #408c99),color-stop(1, #cce2ff));
+  background:-moz-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-webkit-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-o-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:-ms-linear-gradient(top, #408c99 5%, #cce2ff 100%);
+  background:linear-gradient(to bottom, #408c99 5%, #cce2ff 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='##cce2ff',GradientType=0);*/
+  background-color:#e6e6e6;
+}
+.mybutton2:active {
+  position:relative;
+  top:1px;
+}
+
+
+
+label{
+    padding: 10px;
+    font-size:14px;
+    font-family:myFirstFont2;
+    background: #d9d9d9; 
+    display: table;
+    color: #004fab;
+}
+
+label:hover, label:active, input:hover+label, input:active+label {
+    background:#cccccc;
+    color:#000000;
+}
+
+input[type="file"] {
+    display: none;
+}

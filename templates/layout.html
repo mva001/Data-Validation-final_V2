@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  </head>
+  <body>
+    <header>
+        <h1 class="logo">Nokia</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('comp') }}"><h1>HOME</h1></a></li>
+          </ul>
+        </nav></strong>
+    </header>
+    <div class="container">
+    <h3 class=title><b>DATA VALIDATION</b></h3>
+    <div align="center">
+      <form action="/refresh/" method="post">
+        <button class="mybutton2" name="forwardBtn" type="submit">CLEAN DATA</button>
+      </form>
+    </div>
+      {% block content %}
+      {% endblock %}
+    </div>
+    <div class="footer">
+      <div class="footer_contents">
+        <div align="left"> Contact: <a href="mailto:nuno_david.martins.ext@nokia.com" style="color:#ffffff;">Martins, Nuno David (EXT - PT/Amadora)</a></div>
+        <strong>Nokia internal use</strong>
+      </div>
+    </div>
+    </body>
+  
+</html>
