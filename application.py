@@ -106,6 +106,7 @@ def upload():
 			filename = secure_filename(file.filename)
 			# Move the file form the temporal folder to the upload
 			file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+			print(filename)
 			msg2='blabla'
 		else:
 			msg2='Please select a valid extension (.xls or .xlsx)'
