@@ -110,6 +110,7 @@ def upload():
 			msg2='blabla'
 		else:
 			msg2='Please select a valid extension (.xls or .xlsx)'
+			print(msg2)
 			return render_template('multi_upload_index.html',msg2=msg2)
 	if len(os.listdir(application.config['UPLOAD_FOLDER']))>0:
 		prodata.process_file(path=os.path.join(application.config['UPLOAD_FOLDER']),company=application.config['COMPANY_FOLDER'].split('_')[0],report=os.path.join(application.config['DOWNLOAD_FOLDER']),history=os.path.join(application.config['ITSM_FOLDER']))
