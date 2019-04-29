@@ -84,7 +84,7 @@ def index():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			print(os.path.join(application.config['ITSM_FOLDER'])
+			print(os.path.join(application.config['ITSM_FOLDER']))
 			file.save(os.path.join(application.config['ITSM_FOLDER'], filename))
 			
 			msg=filename
