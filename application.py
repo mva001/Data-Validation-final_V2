@@ -94,7 +94,7 @@ def index():
 
 
 # Route that will process the file upload
-@application.route('/upload', methods=['POST'])
+@application.route('/upload', methods=['GET','POST'])
 def upload():
 	msg2=None
 	# Get the name of the uploaded files
