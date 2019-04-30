@@ -11,8 +11,6 @@ application = Flask(__name__)
 
 # This is the path to the templates directory
 application.config['CMDB_FOLDER'] = 'CMDB_templates/'
-
-#application.config['NOAM_FOLDER'] = 'NOAM_templates/'
 #
 # These are the extension that we are accepting to be uploaded
 application.config['ALLOWED_EXTENSIONS'] = set(['xlsx','xls'])
