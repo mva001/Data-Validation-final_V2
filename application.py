@@ -6,8 +6,12 @@ import uuid
 import datetime as dt 
 from datetime import datetime
 import process_data as prodata
+
 # Initialize the Flask applicationlication
-application = Flask(__name__)
+project_root = os.path.dirname(__file__)
+# Im not sure should be application/templates or app/templates or just templates 
+template_path = os.path.join(project_root, 'application/templates')
+application = Flask(__name__, template_folder=template_path)
 
 # This is the path to the templates directory
 application.config['CMDB_FOLDER'] = 'CMDB_templates/'
