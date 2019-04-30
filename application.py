@@ -9,7 +9,7 @@ import process_data as prodata
 
 # Initialize the Flask applicationlication
 project_root = os.path.dirname(__file__)
-# Im not sure should be application/templates or app/templates or just templates 
+# Im not sure should be application/templates or app/templates or just templates
 template_path = os.path.join(project_root, 'templates')
 application = Flask(__name__, template_folder=template_path)
 
@@ -44,7 +44,8 @@ def comp():
 			msg='Already in use or someone forgot to clean the data!'
 		else:
 			id_folder=company + '_' + str(uuid.uuid1())
-			msg = 'Successful!'
+			#msg = 'Successful!'
+			msg = 'project root is:' + project_root
 			os.makedirs(id_folder)
 			os.makedirs(id_folder + '/ITSM_sites')
 			os.makedirs(id_folder +'/Report')
