@@ -42,15 +42,12 @@ def comp():
 			msg='Already in use or someone forgot to clean the data!'
 		else:
 			id_folder=company + '_' + str(uuid.uuid1())
-		#os.makedirs(company)
-		#application.config['COMPANY_NAME_FOLDER'] = company
 			msg = 'Successful!'
-		#id_folder=str(uuid.uuid1())
 			os.makedirs(id_folder)
 			os.makedirs(id_folder + '/ITSM_sites')
 			os.makedirs(id_folder +'/Report')
 			os.makedirs(id_folder + '/File_to_validate')
-			application.config['COMPANY_FOLDER'] = id_folder
+			application.config['COMPANY_FOLDER'] = id_folder + '/'
 			application.config['UPLOAD_FOLDER'] = id_folder + '/File_to_validate/'
 			application.config['DOWNLOAD_FOLDER'] = id_folder + '/Report/'
 			application.config['ITSM_FOLDER'] = id_folder + '/ITSM_sites/'
@@ -85,8 +82,7 @@ def index():
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			print(os.path.join(application.config['ITSM_FOLDER']))
-			#file.save(os.path.join(application.config['ITSM_FOLDER'], filename))
-			
+			file.save(os.path.join(application.config['ITSM_FOLDER'], filename))
 			msg=filename
 		else:
 			msg='Please select a valid extension (.xls or .xlsx)'
@@ -105,15 +101,13 @@ def upload():
 			# Make the filename safe, remove unsupported chars
 			filename = secure_filename(file.filename)
 			# Move the file form the temporal folder to the upload
-			#file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
-			msg2='blabla'
+			file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
 		else:
 			msg2='Please select a valid extension (.xls or .xlsx)'
 			return render_template('multi_upload_index.html',msg2=msg2)
 	if len(os.listdir(application.config['UPLOAD_FOLDER']))>0:
 		prodata.process_file(path=os.path.join(application.config['UPLOAD_FOLDER']),company=application.config['COMPANY_FOLDER'].split('_')[0],report=os.path.join(application.config['DOWNLOAD_FOLDER']),history=os.path.join(application.config['ITSM_FOLDER']))
 		filenames=os.listdir(application.config['DOWNLOAD_FOLDER'])
-
 		text = open(application.config['DOWNLOAD_FOLDER']+'/issues.txt', 'r+',encoding='utf8')
 		content = text.read()
 		text.close()
@@ -123,8 +117,6 @@ def upload():
 	# Load an html page with a link to each uploaded file
 
 	return render_template('multi_files_upload.html', filenames=filenames,text=content,msg2=msg2)
-
-
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
@@ -136,11 +128,6 @@ def uploaded_file(filename):
 
 @application.route("/refresh/", methods=['POST'])
 def refresh():
-	#if os.path.exists(application.config['COMPANY_NAME_FOLDER']):
-	#	print('bla')
-	#	shutil.rmtree(application.config['COMPANY_NAME_FOLDER'])
-	#else:
-	#	print('bla2')
 	if os.path.exists(application.config['COMPANY_FOLDER']):
 		shutil.rmtree(application.config['COMPANY_FOLDER'])
 
@@ -150,35 +137,6 @@ def refresh():
 
 
 
-#@application.route('/NOAM', methods=['POST'])
-#def upload():
-#	msg2=None
-#	# Get the name of the uploaded files
-#	uploaded_files = request.files.getlist("file[]")
-#	for file in uploaded_files:
-#		# Check if the file is one of the allowed types/extensions
-#		if file and allowed_file(file.filename):
-#			# Make the filename safe, remove unsupported chars
-#			filename = secure_filename(file.filename)
-#			# Move the file form the temporal folder to the upload
-#			file.save(os.path.join(application.config['NOAM_FOLDER'], filename))
-#			msg2='blabla'
-#		else:
-#			msg2='Please select a valid extension (.xls or .xlsx)'
-#			return render_template('index_company.html',msg2=msg2)
-#	if len(os.listdir(application.config['NOAM_FOLDER']))>0:
-#		prodata.process_file(path=os.path.join(application.config['UPLOAD_FOLDER']),company=application.config['COMPANY_FOLDER'].split('_')[0],report=os.path.join(application.config['DOWNLOAD_FOLDER']),history=os.path.join(application.config['ITSM_FOLDER']))
-#		filenames=os.listdir(application.config['DOWNLOAD_FOLDER'])
-#
-#		text = open(application.config['DOWNLOAD_FOLDER']+'/issues.txt', 'r+',encoding='utf8')
-#		content = text.read()
-#		text.close()
-#		#shutil.rmtree(application.config['COMPANY_NAME_FOLDER'])
-#	# Redirect the user to the uploaded_file route, which
-#	# will basicaly show on the browser the uploaded file
-#	# Load an html page with a link to each uploaded file
-#
-#	return render_template('multi_files_upload.html', filenames=filenames,text=content,msg2=msg2)
 
 if __name__ == '__main__':
 	#port = int(os.environ.get("PORT", 5000))
