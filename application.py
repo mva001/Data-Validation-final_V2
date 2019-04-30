@@ -10,7 +10,7 @@ import process_data as prodata
 # Initialize the Flask applicationlication
 project_root = os.path.dirname(__file__)
 # Im not sure should be application/templates or app/templates or just templates 
-template_path = os.path.join(project_root, 'application/templates')
+template_path = os.path.join(project_root, 'templates')
 application = Flask(__name__, template_folder=template_path)
 
 # This is the path to the templates directory
