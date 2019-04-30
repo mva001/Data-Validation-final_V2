@@ -8,13 +8,15 @@ from datetime import datetime
 import process_data as prodata
 
 # Initialize the Flask applicationlication
-project_root = os.path.dirname(__file__)
-# Im not sure should be application/templates or app/templates or just templates
+#project_root = os.path.dirname(__file__)
+project_root = os.path.dirname(os.path.abspath(__file__))
+
+# Im not sure should be application/templates or app/templates or just templates 
 template_path = os.path.join(project_root, 'templates')
 application = Flask(__name__, template_folder=template_path)
 
 # This is the path to the templates directory
-application.config['CMDB_FOLDER'] = 'CMDB_templates/'
+application.config['CMDB_FOLDER'] = project_root+ '/'+ 'CMDB_templates/'
 #
 # These are the extension that we are accepting to be uploaded
 application.config['ALLOWED_EXTENSIONS'] = set(['xlsx','xls'])
@@ -44,17 +46,19 @@ def comp():
 			msg='Already in use or someone forgot to clean the data!'
 		else:
 			id_folder=company + '_' + str(uuid.uuid1())
-			#msg = 'Successful!'
-			msg = 'project root is:' + project_root
 			os.makedirs(id_folder)
 			os.makedirs(id_folder + '/ITSM_sites')
 			os.makedirs(id_folder +'/Report')
 			os.makedirs(id_folder + '/File_to_validate')
-			application.config['COMPANY_FOLDER'] = id_folder + '/'
-			application.config['UPLOAD_FOLDER'] = id_folder + '/File_to_validate/'
-			application.config['DOWNLOAD_FOLDER'] = id_folder + '/Report/'
-			application.config['ITSM_FOLDER'] = id_folder + '/ITSM_sites/'
-		
+			application.config['COMPANY_FOLDER'] = project_root+ '/' + id_folder
+			application.config['UPLOAD_FOLDER'] = project_root+'/' + id_folder + '/File_to_validate/'
+			application.config['DOWNLOAD_FOLDER'] = project_root+'/' + id_folder + '/Report/'
+			application.config['ITSM_FOLDER'] = project_root+'/' + id_folder + '/ITSM_sites/'
+			msg = [
+			application.config['COMPANY_FOLDER'],
+			application.config['UPLOAD_FOLDER'],
+			application.config['DOWNLOAD_FOLDER'],
+			application.config['ITSM_FOLDER']]
 
 	return render_template('index_company.html',msg=msg)
 
@@ -109,7 +113,7 @@ def upload():
 			msg2='Please select a valid extension (.xls or .xlsx)'
 			return render_template('multi_upload_index.html',msg2=msg2)
 	if len(os.listdir(application.config['UPLOAD_FOLDER']))>0:
-		prodata.process_file(path=os.path.join(application.config['UPLOAD_FOLDER']),company=application.config['COMPANY_FOLDER'].split('_')[0],report=os.path.join(application.config['DOWNLOAD_FOLDER']),history=os.path.join(application.config['ITSM_FOLDER']))
+		prodata.process_file(path=os.path.join(application.config['UPLOAD_FOLDER']),company=application.config['COMPANY_FOLDER'].split('/')[-1].split('_')[0],report=os.path.join(application.config['DOWNLOAD_FOLDER']),history=os.path.join(application.config['ITSM_FOLDER']))
 		filenames=os.listdir(application.config['DOWNLOAD_FOLDER'])
 		text = open(application.config['DOWNLOAD_FOLDER']+'/issues.txt', 'r+',encoding='utf8')
 		content = text.read()
