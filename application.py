@@ -26,7 +26,6 @@ def allowed_file(filename):
 	return '.' in filename and \
 		   filename.rsplit('.', 1)[1] in application.config['ALLOWED_EXTENSIONS']
 
-
 @application.route('/', methods=['GET', 'POST'])
 def comp():
 	data=[s for s in os.listdir(os.getcwd()) if len(s) > 20]
@@ -50,15 +49,11 @@ def comp():
 			os.makedirs(id_folder + '/ITSM_sites')
 			os.makedirs(id_folder +'/Report')
 			os.makedirs(id_folder + '/File_to_validate')
-			application.config['COMPANY_FOLDER'] = project_root+ '/' + id_folder
-			application.config['UPLOAD_FOLDER'] = project_root+'/' + id_folder + '/File_to_validate/'
-			application.config['DOWNLOAD_FOLDER'] = project_root+'/' + id_folder + '/Report/'
-			application.config['ITSM_FOLDER'] = project_root+'/' + id_folder + '/ITSM_sites/'
-			msg = [
-			application.config['COMPANY_FOLDER'],
-			application.config['UPLOAD_FOLDER'],
-			application.config['DOWNLOAD_FOLDER'],
-			application.config['ITSM_FOLDER']]
+			application.config['COMPANY_FOLDER'] = request.base_url+ '/' + id_folder
+			application.config['UPLOAD_FOLDER'] = request.base_url+'/' + id_folder + '/File_to_validate/'
+			application.config['DOWNLOAD_FOLDER'] = request.base_url+'/' + id_folder + '/Report/'
+			application.config['ITSM_FOLDER'] = request.base_url+'/' + id_folder + '/ITSM_sites/'
+			msg=request.base_url
 
 	return render_template('index_company.html',msg=msg)
 
