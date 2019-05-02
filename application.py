@@ -45,14 +45,14 @@ def comp():
 			msg='Already in use or someone forgot to clean the data!'
 		else:
 			id_folder=company + '_' + str(uuid.uuid1())
-			os.makedirs(id_folder)
-			os.makedirs(id_folder + '/ITSM_sites')
-			os.makedirs(id_folder +'/Report')
-			os.makedirs(id_folder + '/File_to_validate')
-			application.config['COMPANY_FOLDER'] = request.base_url + 'wwwroot/'+ id_folder
-			application.config['UPLOAD_FOLDER'] = request.base_url + 'wwwroot/' + id_folder + '/File_to_validate/'
-			application.config['DOWNLOAD_FOLDER'] = request.base_url + 'wwwroot/' + id_folder + '/Report/'
-			application.config['ITSM_FOLDER'] = request.base_url + 'wwwroot/' + id_folder + '/ITSM_sites/'
+			os.makedirs(project_root+id_folder)
+			os.makedirs(project_root+id_folder + '/ITSM_sites')
+			os.makedirs(project_root+id_folder +'/Report')
+			os.makedirs(project_root+id_folder + '/File_to_validate')
+			application.config['COMPANY_FOLDER'] = id_folder
+			application.config['UPLOAD_FOLDER'] =  id_folder + '/File_to_validate/'
+			application.config['DOWNLOAD_FOLDER'] = id_folder + '/Report/'
+			application.config['ITSM_FOLDER'] = id_folder + '/ITSM_sites/'
 			msg=request.base_url
 
 	return render_template('index_company.html',msg=msg)
