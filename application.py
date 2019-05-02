@@ -45,10 +45,10 @@ def comp():
 			msg='Already in use or someone forgot to clean the data!'
 		else:
 			id_folder=company + '_' + str(uuid.uuid1())
-			os.makedirs(project_root+id_folder)
-			os.makedirs(project_root+id_folder + '/ITSM_sites')
-			os.makedirs(project_root+id_folder +'/Report')
-			os.makedirs(project_root+id_folder + '/File_to_validate')
+			os.makedirs(project_root+ '/' + id_folder)
+			os.makedirs(project_root+ '/' + id_folder + '/ITSM_sites')
+			os.makedirs(project_root+ '/' + id_folder +'/Report')
+			os.makedirs(project_root+ '/' + id_folder + '/File_to_validate')
 			application.config['COMPANY_FOLDER'] = id_folder
 			application.config['UPLOAD_FOLDER'] =  id_folder + '/File_to_validate/'
 			application.config['DOWNLOAD_FOLDER'] = id_folder + '/Report/'
