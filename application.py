@@ -53,7 +53,7 @@ def comp():
 			application.config['UPLOAD_FOLDER'] =  id_folder + '/File_to_validate/'
 			application.config['DOWNLOAD_FOLDER'] = id_folder + '/Report/'
 			application.config['ITSM_FOLDER'] = id_folder + '/ITSM_sites/'
-			msg=request.base_url
+			msg=[request.base_url,project_root]
 
 	return render_template('index_company.html',msg=msg)
 
