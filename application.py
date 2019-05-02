@@ -49,10 +49,10 @@ def comp():
 			os.makedirs(id_folder + '/ITSM_sites')
 			os.makedirs(id_folder +'/Report')
 			os.makedirs(id_folder + '/File_to_validate')
-			application.config['COMPANY_FOLDER'] = request.base_url+ '/' + id_folder
-			application.config['UPLOAD_FOLDER'] = request.base_url+'/' + id_folder + '/File_to_validate/'
-			application.config['DOWNLOAD_FOLDER'] = request.base_url+'/' + id_folder + '/Report/'
-			application.config['ITSM_FOLDER'] = request.base_url+'/' + id_folder + '/ITSM_sites/'
+			application.config['COMPANY_FOLDER'] = request.base_url + id_folder
+			application.config['UPLOAD_FOLDER'] = request.base_url + id_folder + '/File_to_validate/'
+			application.config['DOWNLOAD_FOLDER'] = request.base_url + id_folder + '/Report/'
+			application.config['ITSM_FOLDER'] = request.base_url + id_folder + '/ITSM_sites/'
 			msg=request.base_url
 
 	return render_template('index_company.html',msg=msg)
